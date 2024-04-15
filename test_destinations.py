@@ -12,14 +12,14 @@ from selenium.webdriver.common.action_chains import ActionChains
 #         self.driver = webdriver.Firefox()
 #         self.driver.get("http://127.0.0.1:8000/")
 #         self.driver.set_window_size(1440, 814)
-#         form = self.driver.find_element_by_id("destinations-form")
-#         first_name_field = form.find_element_by_name("firstname")
-#         last_name_field = form.find_element_by_name("lastname")
-#         email_field = form.find_element_by_name("email")
-#         phone_field = form.find_element_by_name("phone")
-#         category_field = form.find_element_by_name("querycategory")
-#         message_field = form.find_element_by_name("queryaddn")
-#         newsletter_checkbox = form.find_element_by_name("newsletter")
+#         form = self.driver.find_element(By.ID,"destinations-form")
+#         first_name_field = form.find_element(By.CLASS_NAME,"firstname")
+#         last_name_field = form.find_element(By.CLASS_NAME,"lastname")
+#         email_field = form.find_element(By.CLASS_NAME,"email")
+#         phone_field = form.find_element(By.CLASS_NAME,"phone")
+#         category_field = form.find_element(By.CLASS_NAME,"querycategory")
+#         message_field = form.find_element(By.CLASS_NAME,"queryaddn")
+#         newsletter_checkbox = form.find_element(By.CLASS_NAME,"newsletter")
 #         first_name_field.send_keys("John")
 #         last_name_field.send_keys("Doe")
 #         email_field.send_keys("example@example.com")
@@ -27,17 +27,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 #         category_field.send_keys("Regarding Destinations")
 #         message_field.send_keys("This is a test message")
 #         newsletter_checkbox.click()
-#         terms_checkbox = self.driver.find_element_by_css_selector("#defaultCheck2")
+#         terms_checkbox = self.driver.find_element(By.CSS_SELECTOR,"#defaultCheck2")
 #         terms_checkbox.location_once_scrolled_into_view
 #         sleep(1)
 #         terms_checkbox.click()
-#         submit_button = self.driver.find_element_by_css_selector('#form-submit')
+#         submit_button = self.driver.find_element(By.CSS_SELECTOR,'#form-submit')
 #         self.driver.execute_script("arguments[0].click();",submit_button)
 #         # Wait for the form submission to be processed
 #         WebDriverWait(self.driver, 10).until(EC.url_contains('/destinations'))
 
 #     def test_presence(self):
-#         japan_radio_button = self.driver.find_element_by_id("radioJapan")
+#         japan_radio_button = self.driver.find_element(By.ID,"radioJapan")
 #         assert japan_radio_button is not None, "Japan radio button does not exist"
 
 #         # img presence
@@ -104,12 +104,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 #     def test_content(self):
 #         sleep(5)
-#         h1_element = self.driver.find_element_by_xpath("//h1[@class='title']/span[@class='underline']")
+#         h1_element = self.driver.find_element(By.XPATH,"//h1[@class='title']/span[@class='underline']")
 #         text = h1_element.text
 #         assert "Explore" in text
     
 #     def test_functionality(self):
-#         radio_buttons = self.driver.find_elements_by_css_selector('input[name="flexRadioDefault"]')
+#         radio_buttons = self.driver.find_elements(By.CSS_SELECTOR,'input[name="flexRadioDefault"]')
 
 #         # Iterate through each radio button
 #         for radio_button in radio_buttons:
@@ -118,7 +118,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 #             # Wait for a brief moment for the JavaScript to execute and the country description to appear
 #             sleep(3)
 #             # Check if the selected country description is visible while others are hidden
-#             country_descriptions = self.driver.find_elements_by_css_selector('.country-description')
+#             country_descriptions = self.driver.find_elements(By.CSS_SELECTOR,'.country-description')
 #             for description in country_descriptions:
 #                 if radio_button.get_attribute('value').lower() in description.get_attribute('id'):
 #                     assert 'd-none' not in description.get_attribute('class'), f"{radio_button.get_attribute('value')} description is not visible"
@@ -126,7 +126,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 #                     assert 'd-none' in description.get_attribute('class'), f"{description.get_attribute('id')} description is visible while it should be hidden"
 
 #         # Button press
-#         see_packages_button = self.driver.find_element_by_css_selector('#see-packages-btn')
+#         see_packages_button = self.driver.find_element(By.CSS_SELECTOR,'#see-packages-btn')
 #         self.driver.execute_script("arguments[0].click();",see_packages_button)
 #         # Wait for the form submission to be processed
 #         WebDriverWait(self.driver, 10).until(EC.url_contains('/packages'))
@@ -147,14 +147,14 @@ class TravelWebsiteTests(unittest.TestCase):
         self.driver = webdriver.Firefox()
         self.driver.get("http://127.0.0.1:8000/")
         self.driver.set_window_size(1440, 814)
-        form = self.driver.find_element_by_id("destinations-form")
-        first_name_field = form.find_element_by_name("firstname")
-        last_name_field = form.find_element_by_name("lastname")
-        email_field = form.find_element_by_name("email")
-        phone_field = form.find_element_by_name("phone")
-        category_field = form.find_element_by_name("querycategory")
-        message_field = form.find_element_by_name("queryaddn")
-        newsletter_checkbox = form.find_element_by_name("newsletter")
+        form = self.driver.find_element(By.ID,"destinations-form")
+        first_name_field = form.find_element(By.NAME,"firstname")
+        last_name_field = form.find_element(By.NAME,"lastname")
+        email_field = form.find_element(By.NAME,"email")
+        phone_field = form.find_element(By.NAME,"phone")
+        category_field = form.find_element(By.NAME,"querycategory")
+        message_field = form.find_element(By.NAME,"queryaddn")
+        newsletter_checkbox = form.find_element(By.NAME,"newsletter")
         first_name_field.send_keys("John")
         last_name_field.send_keys("Doe")
         email_field.send_keys("example@example.com")
@@ -162,17 +162,18 @@ class TravelWebsiteTests(unittest.TestCase):
         category_field.send_keys("Regarding Destinations")
         message_field.send_keys("This is a test message")
         newsletter_checkbox.click()
-        terms_checkbox = self.driver.find_element_by_css_selector("#defaultCheck2")
+        terms_checkbox = self.driver.find_element(By.CSS_SELECTOR,"#defaultCheck2")
         terms_checkbox.location_once_scrolled_into_view
         sleep(1)
         terms_checkbox.click()
-        submit_button = self.driver.find_element_by_css_selector('#form-submit')
+        submit_button = self.driver.find_element(By.CSS_SELECTOR,'#form-submit')
         self.driver.execute_script("arguments[0].click();",submit_button)
         # Wait for the form submission to be processed
         WebDriverWait(self.driver, 10).until(EC.url_contains('/destinations'))
 
     def test_japan_radio_button_existence(self):
-        japan_radio_button = self.driver.find_element_by_id("radioJapan")
+        sleep(2)
+        japan_radio_button = self.driver.find_element(By.ID,"radioJapan")
         self.assertIsNotNone(japan_radio_button, "Japan radio button does not exist")
 
     def test_image_presence(self):
@@ -219,16 +220,18 @@ class TravelWebsiteTests(unittest.TestCase):
 
     def test_content(self):
         sleep(5)
-        h1_element = self.driver.find_element_by_xpath("//h1[@class='title']/span[@class='underline']")
+        h1_element = self.driver.find_element(By.XPATH,"//h1[@class='title']/span[@class='underline']")
         text = h1_element.text
         self.assertIn("Explore", text)
 
     def test_radio_buttons_functionality(self):
-        radio_buttons = self.driver.find_elements_by_css_selector('input[name="flexRadioDefault"]')
+        radio_buttons = self.driver.find_elements(By.CSS_SELECTOR,'input[name="flexRadioDefault"]')
         for radio_button in radio_buttons:
+            radio_button.location_once_scrolled_into_view
+            sleep(2)
             radio_button.click()
             sleep(3)
-            country_descriptions = self.driver.find_elements_by_css_selector('.country-description')
+            country_descriptions = self.driver.find_elements(By.CSS_SELECTOR,'.country-description')
             for description in country_descriptions:
                 if radio_button.get_attribute('value').lower() in description.get_attribute('id'):
                     self.assertNotIn('d-none', description.get_attribute('class'), f"{radio_button.get_attribute('value')} description is not visible")
@@ -236,7 +239,7 @@ class TravelWebsiteTests(unittest.TestCase):
                     self.assertIn('d-none', description.get_attribute('class'), f"{description.get_attribute('id')} description is visible while it should be hidden")
 
     def test_see_packages_button_functionality(self):
-        see_packages_button = self.driver.find_element_by_css_selector('#packagesButton')
+        see_packages_button = self.driver.find_element(By.ID,'packagesButton')
         self.driver.execute_script("arguments[0].click();",see_packages_button)
         WebDriverWait(self.driver, 10).until(EC.url_contains('/packages'))
         self.assertIn("/packages", self.driver.current_url, "Redirection failed")

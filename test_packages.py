@@ -14,14 +14,14 @@ import warnings
 #         self.driver = webdriver.Firefox()
 #         self.driver.get("http://127.0.0.1:8000/")
 #         self.driver.set_window_size(1440, 814)
-#         form = self.driver.find_element_by_id("destinations-form")
-#         first_name_field = form.find_element_by_name("firstname")
-#         last_name_field = form.find_element_by_name("lastname")
-#         email_field = form.find_element_by_name("email")
-#         phone_field = form.find_element_by_name("phone")
-#         category_field = form.find_element_by_name("querycategory")
-#         message_field = form.find_element_by_name("queryaddn")
-#         newsletter_checkbox = form.find_element_by_name("newsletter")
+#         form = self.driver.find_element(By.ID,"destinations-form")
+#         first_name_field = form.find_element(By.NAME,"firstname")
+#         last_name_field = form.find_element(By.NAME,"lastname")
+#         email_field = form.find_element(By.NAME,"email")
+#         phone_field = form.find_element(By.NAME,"phone")
+#         category_field = form.find_element(By.NAME,"querycategory")
+#         message_field = form.find_element(By.NAME,"queryaddn")
+#         newsletter_checkbox = form.find_element(By.NAME,"newsletter")
 #         first_name_field.send_keys("John")
 #         last_name_field.send_keys("Doe")
 #         email_field.send_keys("example@example.com")
@@ -29,42 +29,42 @@ import warnings
 #         category_field.send_keys("Regarding Destinations")
 #         message_field.send_keys("This is a test message")
 #         newsletter_checkbox.click()
-#         terms_checkbox = self.driver.find_element_by_css_selector("#defaultCheck2")
+#         terms_checkbox = self.driver.find_element(By.CSS_SELECTOR, "#defaultCheck2")
 #         terms_checkbox.location_once_scrolled_into_view
 #         sleep(1)
 #         terms_checkbox.click()
-#         submit_button = self.driver.find_element_by_css_selector('#form-submit')
+#         submit_button = self.driver.find_element(By.CSS_SELECTOR, '#form-submit')
 #         self.driver.execute_script("arguments[0].click();",submit_button)
 #         # Wait for the form submission to be processed
 #         WebDriverWait(self.driver, 10).until(EC.url_contains('/destinations'))
-#         see_packages_button = self.driver.find_element_by_css_selector('#packagesButton')
+#         see_packages_button = self.driver.find_element(By.CSS_SELECTOR, '#packagesButton')
 #         self.driver.execute_script("arguments[0].click();",see_packages_button)
 #         # Wait for the form submission to be processed
 #         WebDriverWait(self.driver, 10).until(EC.url_contains('/packages'))
 
 #     def test_existence(self):
 #         # Cards
-#         card = self.driver.find_elements_by_css_selector('.card')
+#         card = self.driver.find_elements(By.CSS_SELECTOR,'.card')
 #         assert card is not None, "card is not present on the page"
-#         card_img = self.driver.find_elements_by_css_selector('.card-img-top')
+#         card_img = self.driver.find_elements(By.CSS_SELECTOR,'.card-img-top')
 #         assert card_img is not None, "card_img is not present on the page"
-#         card_body = self.driver.find_elements_by_css_selector('.card-body')
+#         card_body = self.driver.find_elements(By.CSS_SELECTOR,'.card-body')
 #         assert card_body is not None, "card_body is not present on the page"
-#         card_text = self.driver.find_elements_by_css_selector('.card-text')
+#         card_text = self.driver.find_elements(By.CSS_SELECTOR,'.card-text')
 #         assert card_text is not None, "card_text is not present on the page"
 
 #         # rangeValueLabel
-#         slider = self.driver.find_elements_by_css_selector('#customRange1')
+#         slider = self.driver.find_elements(By.CSS_SELECTOR,'#customRange1')
 #         assert slider is not None, "slider is not present on the page"
 
 #         # packageSelect
-#         selectRange = self.driver.find_elements_by_css_selector('#packageSelect')
+#         selectRange = self.driver.find_elements(By.CSS_SELECTOR,'#packageSelect')
 #         assert selectRange is not None, "selectRange is not present on the page"
 
 #     def test_location(self):
-#         cards = self.driver.find_elements_by_css_selector('.card')
-#         slider = self.driver.find_element_by_css_selector('#customRange1')
-#         button = self.driver.find_element_by_css_selector('.btn')
+#         cards = self.driver.find_elements(By.CSS_SELECTOR,'.card')
+#         slider = self.driver.find_element(By.CSS_SELECTOR, '#customRange1')
+#         button = self.driver.find_element(By.CSS_SELECTOR, '.btn')
 
 #         # Get the locations of the elements
 #         cards_location = cards[0].location
@@ -78,7 +78,7 @@ import warnings
 #         assert button_location['y'] > slider_location['y'], "Button is not below the slider"
         
 #     def test_size(self):
-#         image = self.driver.find_element_by_css_selector('.card-img-top')
+#         image = self.driver.find_element(By.CSS_SELECTOR, '.card-img-top')
 
 #         # Get the size of the image
 #         image_size = image.size
@@ -87,18 +87,18 @@ import warnings
 #         assert image_size['width'] > 0 and image_size['height'] > 0, "Image size is zero"
 
 #     def test_content(self):
-#         ul_element = self.driver.find_element_by_css_selector('.list-group')
+#         ul_element = self.driver.find_element(By.CSS_SELECTOR, '.list-group')
 
 #         # Get all child elements of the ul
-#         child_elements = ul_element.find_elements_by_css_selector('*')
+#         child_elements = ul_element.find_elements(By.CSS_SELECTOR,'*')
 
 #         # Assert that the ul has at least one child element
 #         assert len(child_elements) > 0, "The ul element is empty"
     
 #     def test_functionality(self):
-#         # button = self.driver.find_element_by_css_selector(".btn")
+#         # button = self.driver.find_element(By.CSS_SELECTOR, ".btn")
 #         # button.click()
-#         submit_button = self.driver.find_element_by_css_selector('.btn')
+#         submit_button = self.driver.find_element(By.CSS_SELECTOR, '.btn')
 #         self.driver.execute_script("arguments[0].click();",submit_button)
 
 #         # Wait for the alert to appear
@@ -142,14 +142,14 @@ class TravelWebsiteTests(unittest.TestCase):
         self.driver = webdriver.Firefox()
         self.driver.get("http://127.0.0.1:8000/")
         self.driver.set_window_size(1440, 814)
-        form = self.driver.find_element_by_id("destinations-form")
-        first_name_field = form.find_element_by_name("firstname")
-        last_name_field = form.find_element_by_name("lastname")
-        email_field = form.find_element_by_name("email")
-        phone_field = form.find_element_by_name("phone")
-        category_field = form.find_element_by_name("querycategory")
-        message_field = form.find_element_by_name("queryaddn")
-        newsletter_checkbox = form.find_element_by_name("newsletter")
+        form = self.driver.find_element(By.ID,"destinations-form")
+        first_name_field = form.find_element(By.NAME,"firstname")
+        last_name_field = form.find_element(By.NAME,"lastname")
+        email_field = form.find_element(By.NAME,"email")
+        phone_field = form.find_element(By.NAME,"phone")
+        category_field = form.find_element(By.NAME,"querycategory")
+        message_field = form.find_element(By.NAME,"queryaddn")
+        newsletter_checkbox = form.find_element(By.NAME,"newsletter")
         first_name_field.send_keys("John")
         last_name_field.send_keys("Doe")
         email_field.send_keys("example@example.com")
@@ -157,47 +157,47 @@ class TravelWebsiteTests(unittest.TestCase):
         category_field.send_keys("Regarding Destinations")
         message_field.send_keys("This is a test message")
         newsletter_checkbox.click()
-        terms_checkbox = self.driver.find_element_by_css_selector("#defaultCheck2")
+        terms_checkbox = self.driver.find_element(By.CSS_SELECTOR, "#defaultCheck2")
         terms_checkbox.location_once_scrolled_into_view
         sleep(1)
         terms_checkbox.click()
-        submit_button = self.driver.find_element_by_css_selector('#form-submit')
+        submit_button = self.driver.find_element(By.CSS_SELECTOR, '#form-submit')
         self.driver.execute_script("arguments[0].click();", submit_button)
         # Wait for the form submission to be processed
         WebDriverWait(self.driver, 10).until(EC.url_contains('/destinations'))
-        see_packages_button = self.driver.find_element_by_css_selector('#packagesButton')
+        see_packages_button = self.driver.find_element(By.CSS_SELECTOR, '#packagesButton')
         self.driver.execute_script("arguments[0].click();", see_packages_button)
         # Wait for the form submission to be processed
         WebDriverWait(self.driver, 10).until(EC.url_contains('/packages'))
 
     def test_card_existence(self):
-        card = self.driver.find_elements_by_css_selector('.card')
+        card = self.driver.find_elements(By.CSS_SELECTOR,'.card')
         assert card is not None, "card is not present on the page"
 
     def test_card_img_existence(self):
-        card_img = self.driver.find_elements_by_css_selector('.card-img-top')
+        card_img = self.driver.find_elements(By.CSS_SELECTOR,'.card-img-top')
         assert card_img is not None, "card_img is not present on the page"
 
     def test_card_body_existence(self):
-        card_body = self.driver.find_elements_by_css_selector('.card-body')
+        card_body = self.driver.find_elements(By.CSS_SELECTOR,'.card-body')
         assert card_body is not None, "card_body is not present on the page"
 
     def test_card_text_existence(self):
-        card_text = self.driver.find_elements_by_css_selector('.card-text')
+        card_text = self.driver.find_elements(By.CSS_SELECTOR,'.card-text')
         assert card_text is not None, "card_text is not present on the page"
 
     def test_slider_existence(self):
-        slider = self.driver.find_elements_by_css_selector('#customRange1')
+        slider = self.driver.find_elements(By.CSS_SELECTOR,'#customRange1')
         assert slider is not None, "slider is not present on the page"
 
     def test_package_select_existence(self):
-        selectRange = self.driver.find_elements_by_css_selector('#packageSelect')
+        selectRange = self.driver.find_elements(By.CSS_SELECTOR,'#packageSelect')
         assert selectRange is not None, "selectRange is not present on the page"
 
     def test_card_location(self):
-        cards = self.driver.find_elements_by_css_selector('.card')
-        slider = self.driver.find_element_by_css_selector('#customRange1')
-        button = self.driver.find_element_by_css_selector('.btn')
+        cards = self.driver.find_elements(By.CSS_SELECTOR,'.card')
+        slider = self.driver.find_element(By.CSS_SELECTOR, '#customRange1')
+        button = self.driver.find_element(By.CSS_SELECTOR, '.btn')
         cards_location = cards[0].location
         slider_location = slider.location
         button_location = button.location
@@ -205,17 +205,17 @@ class TravelWebsiteTests(unittest.TestCase):
         assert button_location['y'] > slider_location['y'], "Button is not below the slider"
 
     def test_image_size(self):
-        image = self.driver.find_element_by_css_selector('.card-img-top')
+        image = self.driver.find_element(By.CLASS_NAME, 'package-image')
         image_size = image.size
         assert image_size['width'] > 0 and image_size['height'] > 0, "Image size is zero"
 
     def test_ul_element_content(self):
-        ul_element = self.driver.find_element_by_css_selector('.list-group')
-        child_elements = ul_element.find_elements_by_css_selector('*')
+        ul_element = self.driver.find_element(By.CSS_SELECTOR, '.list-group')
+        child_elements = ul_element.find_elements(By.CSS_SELECTOR,'*')
         assert len(child_elements) > 0, "The ul element is empty"
 
     def test_alert_content(self):
-        submit_button = self.driver.find_element_by_css_selector('.btn')
+        submit_button = self.driver.find_element(By.CSS_SELECTOR, '.btn')
         self.driver.execute_script("arguments[0].click();", submit_button)
         sleep(2)  # Adjust the sleep time as needed
         alert = self.driver.switch_to.alert
@@ -224,7 +224,7 @@ class TravelWebsiteTests(unittest.TestCase):
         assert "Cost for selected package is: $4300" == alert_text, "The alert content is not as expected"
 
     def tearDown(self):
-        sleep(1)  # Optional delay for better visualization
+        # sleep(1)  # Optional delay for better visualization
         self.driver.close()
 
 if __name__ == "__main__":

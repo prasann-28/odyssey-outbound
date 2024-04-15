@@ -296,20 +296,21 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      const selectElement = document.getElementById('destinationSelect');
+      const radioButtons = document.querySelectorAll('input[name="flexRadioDefault"]');
       const countryDescriptions = document.querySelectorAll('.country-description');
-  
-      selectElement.addEventListener('change', function () {
-        const selectedCountry = this.value;
-        
-        // Hide all descriptions
-        countryDescriptions.forEach(function (description) {
-          description.classList.add('d-none');
-        });
-  
-        // Show description of selected country
-        document.getElementById(selectedCountry.toLowerCase()).classList.remove('d-none');
+
+      radioButtons.forEach(function (radioButton) {
+          radioButton.addEventListener('change', function () {
+              const selectedCountry = this.value;
+              console.log(selectedCountry)
+              // Hide all descriptions
+              countryDescriptions.forEach(function (description) {
+                  description.classList.add('d-none');
+              });
+              // Show description of selected country
+              document.getElementById(selectedCountry.toLowerCase()).classList.remove('d-none');
+          });
       });
-    });
+  });
 </script>
 {% endblock content %}
