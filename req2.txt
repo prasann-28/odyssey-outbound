@@ -1,0 +1,24 @@
+Brotli @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_01vdzesc6m/croots/recipe/brotli-split_1659616063272/work
+certifi @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_dfez5lkpj0/croot/certifi_1707229180975/work/certifi
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+exceptiongroup @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_f147j11jio/croot/exceptiongroup_1706031400682/work
+idna @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_00jf0h4zbt/croot/idna_1666125573348/work
+iniconfig @ file:///home/linux1/recipes/ci/iniconfig_1610983019677/work
+packaging @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_2bd6vdlyjt/croot/packaging_1710810554459/work
+pluggy @ file:///opt/concourse/worker/volumes/live/42ef51ae-f79c-40e0-6d26-eb6fe9d8ba6e/volume/pluggy_1648042596777/work
+py @ file:///opt/conda/conda-bld/py_1644396412707/work
+PySocks @ file:///opt/concourse/worker/volumes/live/112288ac-9cb0-4e73-768b-13baf4ca6419/volume/pysocks_1605305820043/work
+pytest @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_7089yk6bfu/croot/pytest_1690474697638/work
+pytest-base-url @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_7eljy2mgwy/croot/pytest-base-url_1696950030103/work
+pytest-html @ file:///croot/pytest-html_1684259960940/work
+pytest-metadata @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_60kee4cveg/croot/pytest-metadata_1696950293389/work
+pytest-selenium @ file:///tmp/build/80754af9/pytest-selenium_1600706695806/work
+pytest-variables @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_f9jls2fd10/croot/pytest-variables_1696950302747/work
+python-dotenv==1.0.1
+requests @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_4fp_3tflo8/croot/requests_1707355574897/work
+selenium @ file:///opt/concourse/worker/volumes/live/9dcbb584-e669-4c23-547e-fda41ecd267d/volume/selenium_1614267791101/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+tenacity @ file:///opt/concourse/worker/volumes/live/5314c84c-7dbc-4bb1-4a1d-10f258a94a46/volume/tenacity_1608241898279/work
+tomli @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_90762ba4-f339-47e8-bd29-416854a59b233d27hku_/croots/recipe/tomli_1657175507767/work
+urllib3==1.26.16
+webdriver-manager==4.0.1
