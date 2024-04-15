@@ -8,7 +8,7 @@
 
 <form id="userForm" method="POST" action="{% url 'packages' %}">
   {% csrf_token %}
-<div class="row p-5">
+<div class="row p-5" id='destinationRadios'>
   {% for destination in destinations %}
   <div class="col">
     
@@ -41,7 +41,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/cddaZDt6uRw">
+                        <img class='destination-image' src="https://source.unsplash.com/cddaZDt6uRw">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/Pz3EHf-KJfc">
+                        <img class='destination-image' src="https://source.unsplash.com/Pz3EHf-KJfc">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -93,7 +93,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/peYW3VwICpE">
+                        <img class='destination-image' src="https://source.unsplash.com/peYW3VwICpE">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/VmeOZQjTVGE">
+                        <img class='destination-image' src="https://source.unsplash.com/VmeOZQjTVGE">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -138,11 +138,11 @@
             <div class="grid">
               <div class="column-xs-12">
                 <div class="controls">
-                    <button class="previous">
+                    <button class="previous" type='button'>
                       <span class="visually-hidden">Previous</span>
                       <span class="icon arrow-left" aria-hidden="true"></span>
                     </a>
-                    <button class="next">
+                    <button class="next" type='button'>
                       <span class="visually-hidden">Next</span>
                       <span class="icon arrow-right" aria-hidden="true"></span>
                     </a>
@@ -172,7 +172,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://images.unsplash.com/photo-1549918864-48ac978761a4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4">
+                        <img class='destination-image' src="https://images.unsplash.com/photo-1549918864-48ac978761a4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -210,7 +210,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://plus.unsplash.com/premium_photo-1680806490143-97e569c14662?w=900&auto=format&fit=crop&q=60&i">
+                        <img class='destination-image' src="https://plus.unsplash.com/premium_photo-1680806490143-97e569c14662?w=900&auto=format&fit=crop&q=60&i">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -247,7 +247,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=900&auto=format&fit=crop&q=60&ixlib=r">
+                        <img class='destination-image' src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=900&auto=format&fit=crop&q=60&ixlib=r">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -283,7 +283,7 @@
     <input type="hidden" name="queryaddn" value="{{ user.queryaddn }}">
     <input type="hidden" name="terms" value="{{ user.terms }}">
     <center class=' w-full pb-5'>
-      <button type="submit" class="btn btn-primary w-25 " id='see-packages-btn'>See Packages</button>
+      <button id='packagesButton' type="submit" class="btn btn-primary w-25 ">See Packages</button>
     </center>
   </form>
   

@@ -27,7 +27,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/cddaZDt6uRw">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://source.unsplash.com/cddaZDt6uRw">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/Pz3EHf-KJfc">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://source.unsplash.com/Pz3EHf-KJfc">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -79,7 +79,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/peYW3VwICpE">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://source.unsplash.com/peYW3VwICpE">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -105,7 +105,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://source.unsplash.com/VmeOZQjTVGE">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://source.unsplash.com/VmeOZQjTVGE">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -158,7 +158,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://images.unsplash.com/photo-1549918864-48ac978761a4?w=900&auto=format&fit=crop&q=60&ixlib=rb-4">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://images.unsplash.com/photo-1549918864-48ac978761a4?w=1800&auto=format&fit=crop&q=60&ixlib=rb-4">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -196,7 +196,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://plus.unsplash.com/premium_photo-1680806490143-97e569c14662?w=900&auto=format&fit=crop&q=60&i">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://plus.unsplash.com/premium_photo-16808064180143-97e569c14662?w=1800&auto=format&fit=crop&q=60&i">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -233,7 +233,7 @@
                     </div>
                     <div class="column-xs-12 column-md-10">
                       <div class="image-holder">
-                        <img src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=900&auto=format&fit=crop&q=60&ixlib=r">
+                        <img  style="transform: rotate(180deg);" class='destination-image' src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=1800&auto=format&fit=crop&q=60&ixlib=r">
                       </div>
                       <div class="grid">
                         <div class="column-xs-12 column-md-9">
@@ -264,13 +264,20 @@
 </center>
 </div>
   <div class="row p-5">
-    <select id="destinationSelect"  class="form-select" aria-label="Default select example">
+    {% comment %} <select id="destinationSelect"  class="form-select" aria-label="Default select example"> {% endcomment %}
     {% for destination in destinations %}
-      <option value="{{ destination.name }}">{{destination.name}}</option>
+      {% comment %} <option value="{{ destination.name }}">{{destination.name}}</option> {% endcomment %}
+      <div class="form-check">
+        <input id='radio{{ destination.name }}' value="{{ destination.name }}" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          {{destination.name}}
+        </label>
+      </div>
   {% endfor %}
-    </select>
+    {% comment %} </select> {% endcomment %}
       
     </div>
+    
   </div>
   <center class=' w-full pb-5'>
     <button type="button" class="btn btn-primary w-25 " id='see-packages-btn' onclick="alertEstimate()">See Cost Estimate</button>
@@ -278,9 +285,14 @@
   <script>
     // JavaScript
     function alertEstimate(){
+      if('{{cost_estimates}}' == '0'){
+        alert('Please continue from beginning')
+        window.location.href = '{% url "home" %}';
+      }
+      else{
       var selectedCountry = document.getElementById('destinationSelect').value;
       var costs = JSON.parse("{{cost_estimates|escapejs}}")
-      alert("Cost for " + selectedCountry + " is: $" + costs[selectedCountry]) 
+      alert("Cost for " + selectedCountry + " is: $" + costs[selectedCountry]) }
     }
 
     document.addEventListener("DOMContentLoaded", function () {

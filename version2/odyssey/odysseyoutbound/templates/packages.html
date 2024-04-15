@@ -3,22 +3,60 @@
 {% block content %}
 
 <!-- partial:index.partial.html -->
-<section class="hero-section">
-  <link rel="stylesheet" href="{% static 'packagesv2/style.css' %}">
-  <div class="card-grid">
-    {% for package in packages %}
-    <a class="card" href="#">
-      <div class="card__background" style="background-image: url({{package.image}})"></div>
-      <div class="card__content">
-        <h3 class="card__heading">{{package.name}}</h3>
-        <p class="card__category">{{package.description}}</p>
-        <p class="card__category">{{package.price}}</p>
-        <p class="card__category">{{package.duration}}</p>
+<div class="m-auto p-5">
+  {% for package in packages  %}
+    <div class="card mb-3 w-100" >
+      <div class="row no-gutters w-100">
+        <div class="col-md-4 w-100">
+          <img  style="transform: rotate(180deg);" src="{{package.image}}" class="card-img h-100" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{package.name}}</h5>
+            <p class="card-text">{{package.description}}</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{package.price}}</li>
+              <li class="list-group-item">{{package.duration}}</li>
+              <li class="list-group-item">
+            {% for destination in package.destinations.all %}
+                {{ destination.name }}
+                {% if not forloop.last %},{% endif %}
+            {% endfor %}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </a>
-    {% endfor %}
-  <div>
-</section>
+    </div>
+
+  {% endfor %}
+  <script>
+    function increaseBorder(card) {
+      // Save the previous border thickness
+      card.dataset.prevBorderWidth = card.style.borderWidth;
+
+      // Increase border thickness by 3
+      card.style.borderWidth = (parseInt(card.style.borderWidth) + 3) + "px";
+  }
+
+  function revertBorder(card) {
+      // Revert border thickness to the original
+      card.style.borderWidth = card.dataset.prevBorderWidth;
+  }
+
+  function toggleSelection(card, packageName, selectedCountry) {
+      // Toggle the 'selected' class
+      card.classList.toggle('selected');
+
+      // Log package name and selected country
+      console.log("Selected Package: " + packageName);
+      console.log("Selected Country: " + selectedCountry);
+  }
+
+  
+</script>
+
+</div>
 <form id="packagesForm" method="POST" action="{% url 'destinations' %}">
   {% csrf_token %}
 <div class='w-full py-5'>

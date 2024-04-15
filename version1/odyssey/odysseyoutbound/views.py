@@ -58,6 +58,8 @@ def packages(request):
 			return redirect('home')
 		cost_estimates = dumps(cost_estimates)
 		return render(request, 'packages.html', {'packages' : packages, 'selected_country': selected_country, 'cost_estimates': cost_estimates})
+	else:
+		return redirect('home')
 
 package_prices = {"Family Fun Package": 1500, "Relaxation Retreat Package": 2500 , "Cultural Immersion Package": 1800, "Adventure Seeker Package": 2000 }
 destination_prices = {"Japan": 150, "Ireland": 100, "United States": 175, "United Kingdom": 100}
