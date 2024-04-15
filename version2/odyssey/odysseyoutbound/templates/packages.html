@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- partial:index.partial.html -->
+<section class="hero-section">
+  <link rel="stylesheet" href="{% static 'packagesv2/style.css' %}">
+  <div class="card-grid">
+    {% for package in packages %}
+    <a class="card" href="#">
+      <div class="card__background" style="background-image: url({{package.image}})"></div>
+      <div class="card__content">
+        <h3 class="card__heading">{{package.name}}</h3>
+        <p class="card__category">{{package.description}}</p>
+        <p class="card__category">{{package.price}}</p>
+        <p class="card__category">{{package.duration}}</p>
+      </div>
+    </a>
+    {% endfor %}
+  <div>
+</section>
+<form id="packagesForm" method="POST" action="{% url 'destinations' %}">
+  {% csrf_token %}
+<div class='w-full py-5'>
+  <div class='d-flex flex-row justify-content-evenly w-full pb-5'>
+
+{% comment %} <select class="form-select w-25" aria-label="Default select example">
+  {% for package in packages %}
+  <option value="{{package.name}}" {% if forloop.first %} selected {% endif %}>{{package.name}}</option>
+  {% endfor %}  
+</select> {% endcomment %}
+<div class='w-25'>
+  <label>Package</label>
+  <br>
+  {% for package in packages  %}
+  <div class="form-check">
+    <input id='package-select' class="form-check-input" type="radio" name="flexRadioDefault" value='{{package.name}}'>
+    <label class="form-check-label" for="flexRadioDefault1">
+      {{package.name}}
+    </label>
+  </div>
+  {% endfor %}
+
+  
+</div>
+
+<div class='w-25'>
+  <label for="customRange1" id='rangeValueLabel'  class="form-label">Number of travellers: 2</label>
+<input type="range" class="form-range" name='customRange1' min="1" max="5" step="1" id="customRange1" value="2">
+</div>
+</div>
+  <center class="pb-5">
+    <div class="form-check d-flex flex-row justify-content-center py-3">
+      <input class="form-check-input mx-2" type="checkbox" value="" id="flexCheckDefault" >
+      <label class="form-check-label" for="flexCheckDefault">
+        Agree to receive updates in packages.
+      </label>
+    </div>
+<button type="submit" class="btn btn-primary">Select Destination</a>
+
+</center>
+<script>
+  // Get the range input element
+  const rangeInput = document.getElementById("customRange1");
+  // Get the label element to display the range value
+  const rangeValueLabel = document.getElementById("rangeValueLabel");
+
+  // Add event listener to the range input
+  rangeInput.addEventListener("input", function() {
+    // Update the label text with the current value of the range
+    if(this.value === '5'){
+      rangeValueLabel.innerText = "Number of travellers: 4+" ;
+    }
+    else{
+      rangeValueLabel.innerText = "Number of travellers: " + this.value;
+    }
+    
+  });
+</script>
+</div>
+</form>
+
+<!-- partial -->
+
+
+{% endblock %}

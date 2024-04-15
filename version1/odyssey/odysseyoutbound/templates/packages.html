@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="m-auto p-5 d-flex flex-row justify-content-evenly">
+    {% for package in packages  %}
+    
+    <div class="card active" style="width: 18rem;" onmouseover="increaseBorder(this)" onmouseleave="revertBorder(this)" onclick="toggleSelection(this, '{{package.name}}', '{{selected_country}}')">
+        <img src="{{package.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{package.name}}</h5>
+          <p class="card-text">{{package.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{package.price}}</li>
+          <li class="list-group-item">{{package.duration}}</li>
+          <li class="list-group-item">
+        {% comment %} All destinations {% endcomment %}
+        {% for destination in package.destinations.all %}
+            {{ destination.name }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+          </li>
+        </ul>
+      </div>
+    
+    {% endfor %}
+    <script>
+      function increaseBorder(card) {
+        // Save the previous border thickness
+        card.dataset.prevBorderWidth = card.style.borderWidth;
+
+        // Increase border thickness by 3
+        card.style.borderWidth = (parseInt(card.style.borderWidth) + 3) + "px";
+    }
+
+    function revertBorder(card) {
+        // Revert border thickness to the original
+        card.style.borderWidth = card.dataset.prevBorderWidth;
+    }
+
+    function toggleSelection(card, packageName, selectedCountry) {
+        // Toggle the 'selected' class
+        card.classList.toggle('selected');
+
+        // Log package name and selected country
+        console.log("Selected Package: " + packageName);
+        console.log("Selected Country: " + selectedCountry);
+    }
+
+    
+  </script>
+  
+</div>
+
+<div class='w-full'>
+  <div class='d-flex flex-row justify-content-evenly w-full pb-5'>
+<div class='w-25'>
+  <label for="customRange1" id='rangeValueLabel' class="form-label">Number of travellers: 2</label>
+<input type="range" class="form-range" min="1" max="5" step="1" id="customRange1" value="2">
+</div>
+<select id='packageSelect' class="form-select w-25" aria-label="Default select example">
+  {% for package in packages %}
+  <option value="{{package.name}}" {% if forloop.first %} selected {% endif %}>{{package.name}}</option>
+  {% endfor %}  
+</select>
+</div>
+  <center class="pb-5">
+    <div class="form-check d-flex flex-row justify-content-center py-3">
+      <input class="form-check-input mx-2" type="checkbox" value="" id="flexCheckDefault" required>
+      <label class="form-check-label" for="flexCheckDefault">
+        Agree to terms and conditions for cost estimation.
+      </label>
+    </div>
+<button type="button" class="btn btn-primary" onclick="alertEstimate()">Get Cost Estimate</button>
+
+</center>
+<script>
+  function alertEstimate(){
+    var costs = JSON.parse("{{cost_estimates|escapejs}}")
+    var selectedPackage = document.getElementById('packageSelect').value;
+    var travellers = document.getElementById('customRange1').value;
+    alert("Cost for selected package is: $" + costs[selectedPackage] *  travellers)
+  }
+  // Get the range input element
+  const rangeInput = document.getElementById("customRange1");
+  // Get the label element to display the range value
+  const rangeValueLabel = document.getElementById("rangeValueLabel");
+
+  // Add event listener to the range input
+  rangeInput.addEventListener("input", function() {
+    // Update the label text with the current value of the range
+    if(this.value === '5'){
+      rangeValueLabel.innerText = "Number of travellers: 4+" ;
+    }
+    else{
+      rangeValueLabel.innerText = "Number of travellers: " + this.value;
+    }
+    
+  });
+</script>
+</div>
+
+{% endblock %}

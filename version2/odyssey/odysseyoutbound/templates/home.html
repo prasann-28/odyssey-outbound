@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'landing/style.css' %}">
+<script src="{% static 'packages/script.js' %}"></script>
+<div id="parallax-world-of-ugg">
+  
+    <section>
+      <div class="title">
+        <h3>Your mystical adventure awaits at</h3>
+        <h1>Odyssey Outbound</h1>
+      </div>
+    </section>
+    <div class="row w-90 overflow-hidden">
+    <section class='col'>
+        <div class="parallax-one">
+          <h2>ODYSSEY</h2>
+          <h2>OUTBOUND</h2>
+        </div>
+    </section>
+    
+    <section class='col pr-5 object-fit-contain'>
+      <div class="block ">
+        <p><span class="first-character sc">I</span>n 1978, Brian Smith landed in Southern California with a bag of sheepskin boots and hope. He fell in love with the sheepskin experience and was convinced the world would one day share this love. The beaches of Southern California had long been an epicenter of a relaxed, casual lifestyle, a lifestyle that Brian felt was a perfect fit for his brand. So he founded the UGG brand, began selling his sheepskin boots and they were an immediate sensation. By the mid 1980's, the UGG brand became a symbol of relaxed southern California culture, gaining momentum through surf shops and other shops up and down the coast of California, from San Diego to Santa Cruz. UGG boots reached beyond the beach, popping up in big cities and small towns all over, and in every level of society. Girls wore their surfer boyfriend's pair of UGG boots like a letterman jacket. When winter came along, UGG boots were in ski shops and were seen in lodges from Mammoth to Aspen.</p>
+      </div>
+    </section>
+  </div>
+  <div class='row'>
+    
+    <section class='col w-75'>
+        <div class="block">
+          {% include "package_low.html" %}
+        <center class="w-full pb-5 pt-0">
+          <a type="button" href="#destinations-form" class="btn btn-primary">See Packages</a>
+        </center>
+      </section>
+      <section class='col'>
+      <div class="parallax-two">
+        <h2>EXPLORE PACKAGES</h2>
+      </div>
+    </section>
+    </div>
+    <section>
+      <div class="parallax-three">
+        <h2>GET IN TOUCH</h2>
+      </div>
+    </section>
+    
+    <section>
+        <div class="container text-center p-5">
+            <div class="row">
+              <div class="col">
+                <form id='destinations-form' action="{% url 'packages' %}" method="POST">
+                  {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                      {% comment %} form 1 {% endcomment %}
+                      <div class="input-group mb-3">
+                        <span class="input-group-text"  id="inputGroup-sizing-default">First Name</span>
+                        <input id="first_name" type="text" name='firstname' class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Last Name</span>
+                            <input id="last_name" type="text" name='lastname' class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      {% comment %} form 1 {% endcomment %}
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                        <input type="email" class="form-control" name='email' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Phone</span>
+                            <input type="text" class="form-control" name='phone' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row pb-3 pt-2 mx-1">
+                    
+                    <select class="form-select" name='querycategory' aria-label="Default select example">
+                        <option selected>Category of query</option>
+                        <option value="Regarding Destinations">Regarding Destinations</option>
+                        <option value="Regarding Packages">Regarding Packages</option>
+                        <option value="Other queries">Other queries</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <span class="input-group-text">Let us know</span>
+                            <textarea class="form-control" name='queryaddn' value='' aria-label="With textarea"></textarea>
+                          </div>
+                        </div>
+                        <div class="row py-3">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" name='newsletter' type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Subscribe to OdysseyOutbound newsletter
+                                    </label>
+                                  </div>
+                            </div>    
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" name='terms' type="checkbox" value="" id="defaultCheck2" required>
+                                    <label class="form-check-label" for="defaultCheck2">
+                                      Agree to terms and conditions for inquiries.
+                                    </label>
+                                  </div>
+                            </div>    
+                            </div>
+                              <button type="submit" class="btn btn-primary my-4">Submit</button>      
+                        </div>
+                        
+                </div>
+                
+            </form>
+              </div>
+            </div>
+          </div>
+    </section>
+      
+    </div>
+    
+
+{% endblock %}
